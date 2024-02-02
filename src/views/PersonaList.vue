@@ -8,13 +8,8 @@
         </ion-label>
       </ion-item>
     </ion-list>
-    <ion-infinite-scroll 
-      @ionInfinite="cargarMasPersonas" 
-      :disabled="!hasMore"
-      threshold="100px">
-      <ion-infinite-scroll-content
-        loading-spinner="bubbles"
-        loading-text="Cargando más personas...">
+    <ion-infinite-scroll @ionInfinite="cargarMasPersonas" :disabled="!hasMore" threshold="100px">
+      <ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Cargando más personas...">
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </ion-content>
@@ -24,11 +19,11 @@
 import { computed, onMounted } from 'vue';
 import { usePersonaStore } from '@/stores/personaStore';
 import {
-  IonContent, 
-  IonList, 
-  IonItem, 
-  IonLabel, 
-  IonInfiniteScroll, 
+  IonContent,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonInfiniteScroll,
   IonInfiniteScrollContent
 } from '@ionic/vue';
 
