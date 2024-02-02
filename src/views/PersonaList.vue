@@ -22,21 +22,15 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, watch, computed} from 'vue';
+import { onMounted, computed } from 'vue';
 import { usePersonaStore } from '@/stores/personaStore';
 import { IonContent, IonList, IonItem, IonLabel, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/vue';
 
 const personaStore = usePersonaStore();
-const infiniteScrollEnabled = ref(true);
+const infiniteScrollEnabled = computed(() => personaStore.page < personaStore.totalPages && !personaStore.isLoading);
 
-onMounted(async () => {
-  await personaStore.getPersonas();
-});
-
-watch(() => personaStore.page, async (newPage) => {
-  if (newPage > 1) {
-    await personaStore.getPersonas();
-  }
+onMounted(() => {
+  personaStore.getPersonas();
 });
 
 const masInformacion = async (event: CustomEvent<void>) => {
@@ -45,7 +39,6 @@ const masInformacion = async (event: CustomEvent<void>) => {
 };
 
 const personas = computed(() => personaStore.personas);
-
 </script>
 
 <style scoped>
