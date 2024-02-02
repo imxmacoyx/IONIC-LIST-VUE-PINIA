@@ -1,4 +1,3 @@
-// src/store/personaStore.ts
 import { defineStore } from 'pinia';
 import axiosClient from '@/api/axiosClient';
 import { Persona, PersonaPaginadaResponse } from '@/interfaces/personaInterface';
