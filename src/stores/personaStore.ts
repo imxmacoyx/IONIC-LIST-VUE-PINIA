@@ -11,13 +11,13 @@ export const usePersonaStore = defineStore({
     pageSize: 10,
     totalPages: 1,
     isLoading: false,
-    error: null,
+    error: '',
   }),
   actions: {
     async fetchPersonas(initial = false) {
       if (this.isLoading) return; 
       this.isLoading = true;
-      this.error = null;
+      this.error = '';
 
       if (initial) {
         this.personas = [];
